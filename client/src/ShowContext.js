@@ -42,6 +42,9 @@ export function ShowContextProvider(props) {
     localStorage.removeItem("numberOfProducts1");
     localStorage.removeItem("ProductsInOrder1");
     localStorage.removeItem("orderId")
+    localStorage.removeItem("eventId")
+
+
     setToken(null);
     navigate("/login");
   }
