@@ -8,10 +8,9 @@ import { fetchAllRoutes } from './routes/allRoutes';
 
 export const app: express.Application = express();
 
-if(process.env.NODE_ENV === "production")
-{
+
   app.use(express.static(path.join(__dirname,"../client/build")))
-}
+
 
 
 app.use(cors());

@@ -11,9 +11,7 @@ const path = require('path');
 dotenv_1.default.config();
 const allRoutes_1 = require("./routes/allRoutes");
 exports.app = (0, express_1.default)();
-if (process.env.NODE_ENV === "production") {
-    exports.app.use(express_1.default.static(path.join(__dirname, "../client/build")));
-}
+exports.app.use(express_1.default.static(path.join(__dirname, "../client/build")));
 exports.app.use(cors());
 exports.app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -25,6 +23,9 @@ exports.app.use(function (req, res, next) {
 const port = process.env.PORT || 5000;
 // allRoutes file in routes folder
 (0, allRoutes_1.fetchAllRoutes)(exports.app);
+exports.app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 exports.app.listen(port, () => {
     console.log(`server is running on port ${port}`);
 });

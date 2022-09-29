@@ -18,7 +18,7 @@ const proConfig =  process.env.DATABASE_URL
 
 //creating connection
 const Client = new Pool({
-    connectionString:process.env.NODE_ENV === "production"?proConfig:devComfig
+    connectionString:proConfig
 });
 
 export default Client;
