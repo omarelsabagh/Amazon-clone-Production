@@ -67,7 +67,7 @@ export function ShowContextProvider(props) {
   const [products, setProducts] = useState([]);
 
   async function getProducts() {
-    const { data } = await axios.get("http://localhost:5000/products");
+    const { data } = await axios.get("https://amazon-clone-production.herokuapp.com/products");
     setProducts(data.allProducts);
   }
 
@@ -83,7 +83,7 @@ export function ShowContextProvider(props) {
         };
     
         const result = await axios.post(
-          `http://localhost:5000/orders/${decodedToken.user.id}`,
+          `https://amazon-clone-production.herokuapp.com/orders/${decodedToken.user.id}`,
           {
             status: "active",
           },
@@ -121,7 +121,7 @@ export function ShowContextProvider(props) {
          authorization: `Bearer ${localStorage.getItem("userToken")}`,
        };
       const result = await axios.post(
-         `http://localhost:5000/orders/${myOrderID}/products`,
+         `https://amazon-clone-production.herokuapp.com/orders/${myOrderID}/products`,
          {
             quantity:quantity,
             productid:productData.id
@@ -154,7 +154,7 @@ export function ShowContextProvider(props) {
   async function getProductsInOrder(){
     let myOrderID =  localStorage.getItem("orderId")
 
-    const result = await axios.get(`http://localhost:5000/productinorder/${myOrderID}`)
+    const result = await axios.get(`https://amazon-clone-production.herokuapp.com/productinorder/${myOrderID}`)
 
    if(!localStorage.getItem("ProductsInOrder")) 
    {
