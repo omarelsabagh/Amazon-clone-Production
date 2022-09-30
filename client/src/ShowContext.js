@@ -39,10 +39,12 @@ export function ShowContextProvider(props) {
     localStorage.removeItem("targetedProduct");
     localStorage.removeItem("numberOfProducts");
     localStorage.removeItem("ProductsInOrder");
-    localStorage.removeItem("numberOfProducts1");
-    localStorage.removeItem("ProductsInOrder1");
+    // localStorage.removeItem("numberOfProducts1");
+    // localStorage.removeItem("ProductsInOrder1");
     localStorage.removeItem("orderId")
     localStorage.removeItem("eventId")
+    
+
 
 
     setToken(null);
@@ -135,8 +137,16 @@ export function ShowContextProvider(props) {
        if(result.data.message=="product added to order successfully")
        {
         
-          getProductsInOrder()
-          navigate('/cart')
+        const myResult = await getProductsInOrder()
+        if(myResult.data.message=='get all products in order success')
+        {
+               navigate('/cart')
+        }
+        else
+        {
+            setCartError(myResult.data.message)
+        }
+              
         
        }
        else
@@ -158,14 +168,18 @@ export function ShowContextProvider(props) {
     let myOrderID =  localStorage.getItem("orderId")
 
     const result = await axios.get(`https://amazon-clone-production.herokuapp.com/productinorder/${myOrderID}`)
+    if(result.data.message=='get all products in order success')
+    {
+     
+      localStorage.setItem("ProductsInOrder",JSON.stringify(result.data.response) ) 
+      localStorage.setItem("numberOfProducts",result.data.number_of_products)
+     
+    }
 
-
-    localStorage.setItem("ProductsInOrder",JSON.stringify(result.data.response) ) 
-    localStorage.setItem("numberOfProducts",result.data.number_of_products)
-   
-
+   return result
     
   }
+
 
 
    ////////////////////////////////delete products///////////////////

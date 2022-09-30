@@ -36,7 +36,7 @@ export default function FullOneProduct() {
         <div className={`${style.backtohandle}`}>
           <i className="fa-solid fa-chevron-left"></i>
           <a
-            href="#"
+        
             onClick={() => {
               myContext.showFullProduct(false);
             }}>

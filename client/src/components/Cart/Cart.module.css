@@ -32,6 +32,7 @@
   font-size: 12px;
   color: black;
   text-decoration: none;
+  cursor: pointer;
 }
 .backtohandle a:hover {
   text-decoration: underline;
@@ -55,10 +56,19 @@
   color: white;
 }
 
+.btn3:hover {
+  background-color: #be1717;
+  color: white;
+}
+
 .btn1 {
   outline: #FFD814 solid 2px;
 }
 
 .btn2 {
   outline: #17be4a solid 2px;
+}
+
+.btn3 {
+  outline: #be1717 solid 2px;
 }/*# sourceMappingURL=Cart.module.css.map */
