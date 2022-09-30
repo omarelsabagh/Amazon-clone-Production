@@ -75,7 +75,7 @@ export default function Cart() {
             Back to Products
           </a>
         </div>
-  { productsInOneOrder.length?  productsInOneOrder.map((product,index)=>{
+  { productsInOneOrder?  productsInOneOrder.map((product,index)=>{
 return     <div>
 
     <div key={index}  className="container p-2 mt-2 w-50 d-flex align-items-center justify-content-center">
