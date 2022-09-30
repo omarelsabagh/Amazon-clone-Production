@@ -1,11 +1,15 @@
 .card {
-  width: 250px;
+  width: 400px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .cardimg {
   width: 100%;
   height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
 }
 
 .cardimg:hover {

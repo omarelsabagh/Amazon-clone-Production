@@ -159,42 +159,17 @@ export function ShowContextProvider(props) {
 
     const result = await axios.get(`https://amazon-clone-production.herokuapp.com/productinorder/${myOrderID}`)
 
-   if(!localStorage.getItem("ProductsInOrder")) 
-   {
+
     localStorage.setItem("ProductsInOrder",JSON.stringify(result.data.response) ) 
     localStorage.setItem("numberOfProducts",result.data.number_of_products)
-   }
-   else
-   {
-    let myEventId = localStorage.getItem("eventId")
-    console.log(myEventId);
-    const filteredProducts = result.data.response.filter((product)=>{
-      return product.id !== myEventId
-     })
-     localStorage.setItem("ProductsInOrder",JSON.stringify(filteredProducts) ) 
-     localStorage.setItem("numberOfProducts",filteredProducts.length)
+   
 
-   }
     
   }
 
 
    ////////////////////////////////delete products///////////////////
 
-        const [productsInOneOrder,setProductsInOrders] = useState([])
-        
-    function deleteProduct(id){
-      localStorage.setItem("eventId",id)
-      const result = productsInOneOrder.filter((product)=>{
-       return product.id !== id
-      })
-       
-   
-      localStorage.setItem("ProductsInOrder",JSON.stringify(result) )
-      localStorage.setItem("numberOfProducts",result.length)
-    
-      setProductsInOrders(result)
-    }
 
     
 
@@ -202,9 +177,9 @@ export function ShowContextProvider(props) {
   return (
     <ShowContext.Provider
       value={{
-        setProductsInOrders,
-        deleteProduct,
-        productsInOneOrder,
+        // setProductsInOrders,
+        // deleteProduct,
+        // productsInOneOrder,
         getProductsInOrder,
         setCartError,
         getProducts,
