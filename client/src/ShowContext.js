@@ -72,7 +72,7 @@ export function ShowContextProvider(props) {
   const [products, setProducts] = useState([]);
 
   async function getProducts() {
-    const { data } = await axios.get("https://amazon-clone-production.herokuapp.com/products");
+    const { data } = await axios.get("/products");
     setProducts(data.allProducts);
   }
 
@@ -88,7 +88,7 @@ export function ShowContextProvider(props) {
         };
     
         const result = await axios.post(
-          `https://amazon-clone-production.herokuapp.com/orders/${decodedToken.user.id}`,
+          `/orders/${decodedToken.user.id}`,
           {
             status: "active",
           },
@@ -126,7 +126,7 @@ export function ShowContextProvider(props) {
          authorization: `Bearer ${localStorage.getItem("userToken")}`,
        };
       const result = await axios.post(
-         `https://amazon-clone-production.herokuapp.com/orders/${myOrderID}/products`,
+         `/orders/${myOrderID}/products`,
          {
             quantity:quantity,
             productid:productData.id
@@ -167,7 +167,7 @@ export function ShowContextProvider(props) {
   async function getProductsInOrder(){
     let myOrderID =  localStorage.getItem("orderId")
 
-    const result = await axios.get(`https://amazon-clone-production.herokuapp.com/productinorder/${myOrderID}`)
+    const result = await axios.get(`/productinorder/${myOrderID}`)
     if(result.data.message=='get all products in order success')
     {
      

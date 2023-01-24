@@ -58,7 +58,7 @@ setErrorList(validationResult.error.details)
 else
 {
   //validation api
-  const result = await axios.post('https://amazon-clone-production.herokuapp.com/users',user)
+  const result = await axios.post('/users',user)
   if (result.data.message=="success") {
     
     navigate('/registersuccess');

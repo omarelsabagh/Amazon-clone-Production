@@ -29,7 +29,7 @@ let myContext = useContext(ShowContext)
       e.preventDefault();
  
  
-        const result = await axios.post('https://amazon-clone-production.herokuapp.com/users/signin',user)
+        const result = await axios.post('/users/signin',user)
        
         if (result.data.message=="success") {
          
